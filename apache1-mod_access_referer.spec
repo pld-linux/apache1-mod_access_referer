@@ -4,10 +4,11 @@ Summary:	Access control based on "Referer" HTTP header content
 Summary(pl):	Kontrola dostêpu bazuj±ca na zawarto¶ci standardowego nag³ówka HTTP "REFERER"
 Name:		apache-mod_%{mod_name}
 Version:	1.0.2
-Release:	5
+Release:	6
 License:	Apache Group
 Group:		Networking/Daemons
 Source0:	http://dl.sourceforge.net/accessreferer/mod_%{mod_name}-%{version}.tar.gz
+Patch0:		http://dl.sourceforge.net/sourceforge/accessreferer/mod_access_referer_1.0.2_third_part_patch.txt
 URL:		http://sourceforge.net/projects/accessreferer/
 BuildRequires:	%{apxs}
 BuildRequires:	apache(EAPI)-devel
@@ -27,6 +28,7 @@ zale¿no¶ci od zawarto¶ci standardowego nag³ówka HTTP - "REFERER"
 
 %prep
 %setup -q -n mod_%{mod_name}-%{version}
+%patch0 -p0
 
 %build
 PATH=$PATH:%{_sbindir}
