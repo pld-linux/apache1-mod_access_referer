@@ -4,8 +4,8 @@ Summary:	Access control based on "Referer" HTTP header content
 Summary(pl):	Kontrola dostêpu bazuj±ca na zawarto¶ci standardowego nag³ówka HTTP "REFERER"
 Name:		apache-mod_%{mod_name}
 Version:	1.0.2
-Release:	3
-License:	BSD
+Release:	4
+License:	Apache Group License
 Group:		Networking/Daemons
 Source0:	http://prdownloads.sourceforge.net/accessreferer/mod_%{mod_name}-%{version}.tar.gz
 URL:		http://sourceforge.net/projects/accessreferer/
@@ -38,8 +38,6 @@ install -d $RPM_BUILD_ROOT%{_pkglibdir}
 
 install mod_%{mod_name}.so $RPM_BUILD_ROOT%{_pkglibdir}
 
-gzip -9nf README ChangeLog
-
 %post
 %{_sbindir}/apxs -e -a -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
 if [ -f /var/lock/subsys/httpd ]; then
@@ -48,7 +46,7 @@ fi
 
 %preun
 if [ "$1" = "0" ]; then
-%{_sbindir}/apxsks -e -A -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
+%{_sbindir}/apxs -e -A -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
 	if [ -f /var/lock/subsys/httpd ]; then
 		/etc/rc.d/init.d/httpd restart 1>&2
 	fi
@@ -59,5 +57,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README ChangeLog
 %attr(755,root,root) %{_pkglibdir}/*
