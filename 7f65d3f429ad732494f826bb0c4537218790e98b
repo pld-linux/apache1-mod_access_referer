@@ -1,0 +1,4 @@
+- typo in %preun
+- correct License field
+- don't gzip doc's
+- rel 4 STBR
