@@ -1,0 +1,10 @@
+- release 6: security fix
+- apply patch from: http://dl.sourceforge.net/sourceforge/accessreferer/mod_access_referer_1.0.2_third_part_patch.txt
+  Comment from this file:
+
+  mod_access_referer contains a null-pointer dereferences vulnerability that
+  may possibly be used in denial of service attacks. While the impact of
+  this vulnerability is considered low-risk, we advise you to apply the
+  following patch
+
+  Thans to Niels Heinen <zillion@safemode.org> for inform about this fix.
