@@ -5,7 +5,7 @@ Summary(pl):	Kontrola dostêpu bazuj±ca na zawarto¶ci standardowego nag³ówka HTTP
 Name:		apache-mod_%{mod_name}
 Version:	1.0.2
 Release:	4
-License:	Apache Group License
+License:	Apache Group
 Group:		Networking/Daemons
 Source0:	http://prdownloads.sourceforge.net/accessreferer/mod_%{mod_name}-%{version}.tar.gz
 URL:		http://sourceforge.net/projects/accessreferer/
