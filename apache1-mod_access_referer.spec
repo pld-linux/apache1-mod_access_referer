@@ -8,6 +8,7 @@ Release:	6
 License:	Apache Group
 Group:		Networking/Daemons
 Source0:	http://dl.sourceforge.net/accessreferer/mod_%{mod_name}-%{version}.tar.gz
+# Source0-md5:	f1726cfe5965eda1bdca90b8db475377
 Patch0:		http://dl.sourceforge.net/sourceforge/accessreferer/mod_access_referer_1.0.2_third_part_patch.txt
 URL:		http://sourceforge.net/projects/accessreferer/
 BuildRequires:	%{apxs}
