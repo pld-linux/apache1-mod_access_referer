@@ -7,15 +7,13 @@ mod_access_referer contains a null-pinter dereferences vulnerability that may po
 --- mod_access_referer.c.org    Wed Apr  9 19:27:00 2003
 +++ mod_access_referer.c        Wed Apr  9 19:36:20 2003
 @@ -492,6 +492,10 @@
-                                                         (r->headers_in,
-                                                          "Referer"),
-                                                         &uptr);
-+                               if(uptr.hostname == NULL) {
-+                                   return 0;
-+                               }
+ 							 (r->headers_in,
+ 							  "Referer"),
+ 							 &uptr);
++				if(uptr.hostname == NULL) {
++					return 0;
++				}
 +
-                                if (!is_ip (uptr.hostname)) {
-                                        /* XX resolv the domain name */
-                                        got_refererhost_ip = 1;
-
-
+ 				if (!is_ip (uptr.hostname)) {
+ 					/* XX resolv the domain name */
+ 					got_refererhost_ip = 1;
