@@ -4,7 +4,7 @@ Summary:	Access control based on "Referer" HTTP header content
 Summary(pl):	Kontrola dostêpu bazuj±ca na zawarto¶ci standardowego nag³ówka HTTP "REFERER"
 Name:		apache-mod_%{mod_name}
 Version:	1.0.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Networking/Daemons
 Group(cs):	Sí»ové/Démoni
