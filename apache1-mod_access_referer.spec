@@ -2,9 +2,9 @@
 %define 	apxs		%{_sbindir}/apxs1
 Summary:	Access control based on "Referer" HTTP header content
 Summary(pl):	Kontrola dostêpu bazuj±ca na zawarto¶ci standardowego nag³ówka HTTP "REFERER"
-Name:		apache-mod_%{mod_name}
+Name:		apache1-mod_%{mod_name}
 Version:	1.0.2
-Release:	1
+Release:	2
 License:	Apache Group
 Group:		Networking/Daemons
 Source0:	http://dl.sourceforge.net/accessreferer/mod_%{mod_name}-%{version}.tar.gz
