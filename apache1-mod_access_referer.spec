@@ -1,10 +1,10 @@
 %define		mod_name	access_referer
-%define 	apxs		%{_sbindir}/apxs
+%define 	apxs		%{_sbindir}/apxs1
 Summary:	Access control based on "Referer" HTTP header content
 Summary(pl):	Kontrola dostêpu bazuj±ca na zawarto¶ci standardowego nag³ówka HTTP "REFERER"
 Name:		apache-mod_%{mod_name}
 Version:	1.0.2
-Release:	6
+Release:	1
 License:	Apache Group
 Group:		Networking/Daemons
 Source0:	http://dl.sourceforge.net/accessreferer/mod_%{mod_name}-%{version}.tar.gz
@@ -12,9 +12,10 @@ Source0:	http://dl.sourceforge.net/accessreferer/mod_%{mod_name}-%{version}.tar.
 Patch0:		http://dl.sourceforge.net/sourceforge/accessreferer/mod_access_referer_1.0.2_third_part_patch.txt
 URL:		http://sourceforge.net/projects/accessreferer/
 BuildRequires:	%{apxs}
-BuildRequires:	apache(EAPI)-devel
+BuildRequires:	apache1-devel
 Requires(post,preun):	%{apxs}
-Requires:	apache(EAPI)
+Requires:	apache1
+Obsoletes:	apache-mod_%{mod_name} <= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
@@ -32,8 +33,7 @@ zale¿no¶ci od zawarto¶ci standardowego nag³ówka HTTP - "REFERER"
 %patch0 -p0
 
 %build
-PATH=$PATH:%{_sbindir}
-%{__make}
+%{apxs} -c mod_%{mod_name}.c -o mod_%{mod_name}.so
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -46,19 +46,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %{apxs} -e -a -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
-if [ -f /var/lock/subsys/httpd ]; then
-	/etc/rc.d/init.d/httpd restart 1>&2
+if [ -f /var/lock/subsys/apache ]; then
+	/etc/rc.d/init.d/apache restart 1>&2
 fi
 
 %preun
 if [ "$1" = "0" ]; then
 %{apxs} -e -A -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
-	if [ -f /var/lock/subsys/httpd ]; then
-		/etc/rc.d/init.d/httpd restart 1>&2
+	if [ -f /var/lock/subsys/apache ]; then
+		/etc/rc.d/init.d/apache restart 1>&2
 	fi
 fi
 
 %files
 %defattr(644,root,root,755)
-%doc README ChangeLog
+%doc README ChangeLog HACKING *.html
 %attr(755,root,root) %{_pkglibdir}/*
