@@ -9,7 +9,7 @@ License:	Apache Group
 Group:		Networking/Daemons
 Source0:	http://dl.sourceforge.net/accessreferer/mod_%{mod_name}-%{version}.tar.gz
 # Source0-md5:	f1726cfe5965eda1bdca90b8db475377
-Patch0:		http://dl.sourceforge.net/sourceforge/accessreferer/mod_access_referer_1.0.2_third_part_patch.txt
+Patch0:		http://dl.sourceforge.net/accessreferer/mod_access_referer_1.0.2_third_part_patch.txt
 URL:		http://sourceforge.net/projects/accessreferer/
 BuildRequires:	%{apxs}
 BuildRequires:	apache1-devel >= 1.3.33-2
@@ -69,5 +69,5 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc README ChangeLog HACKING *.html
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/conf.d/*_mod_%{mod_name}.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/conf.d/*_mod_%{mod_name}.conf
 %attr(755,root,root) %{_pkglibdir}/*
