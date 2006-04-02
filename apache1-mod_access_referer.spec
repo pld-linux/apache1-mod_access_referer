@@ -13,9 +13,10 @@ Patch0:		http://dl.sourceforge.net/accessreferer/mod_access_referer_1.0.2_third_
 URL:		http://sourceforge.net/projects/accessreferer/
 BuildRequires:	%{apxs}
 BuildRequires:	apache1-devel >= 1.3.33-2
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(triggerpostun):	%{apxs}
 Requires:	apache1 >= 1.3.33-2
-Obsoletes:	apache-mod_%{mod_name} <= %{version}
+Obsoletes:	apache-mod_access_referer <= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR 2>/dev/null)
@@ -39,25 +40,20 @@ zale¿no¶ci od zawarto¶ci standardowego nag³ówka HTTP - "REFERER"
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_pkglibdir},%{_sysconfdir}/conf.d}
-
 install mod_%{mod_name}.so $RPM_BUILD_ROOT%{_pkglibdir}
 
-CFG=$RPM_BUILD_ROOT%{_sysconfdir}/conf.d
-echo 'LoadModule %{mod_name}_module	modules/mod_%{mod_name}.so' > $CFG/90_mod_%{mod_name}.conf
+echo 'LoadModule %{mod_name}_module	modules/mod_%{mod_name}.so' \
+	> $RPM_BUILD_ROOT%{_sysconfdir}/conf.d/90_mod_%{mod_name}.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /var/lock/subsys/apache ]; then
-	/etc/rc.d/init.d/apache restart 1>&2
-fi
+%service -q apache restart
 
 %postun
 if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/apache ]; then
-		/etc/rc.d/init.d/apache restart 1>&2
-	fi
+	%service -q apache restart
 fi
 
 %triggerpostun -- %{name} < 1.0.2-2.1
