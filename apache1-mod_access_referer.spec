@@ -4,7 +4,7 @@ Summary:	Access control based on "Referer" HTTP header content
 Summary(pl):	Kontrola dostêpu bazuj±ca na zawarto¶ci standardowego nag³ówka HTTP "REFERER"
 Name:		apache1-mod_%{mod_name}
 Version:	1.0.2
-Release:	3
+Release:	4
 License:	Apache Group
 Group:		Networking/Daemons
 Source0:	http://dl.sourceforge.net/accessreferer/mod_%{mod_name}-%{version}.tar.gz
@@ -15,7 +15,7 @@ BuildRequires:	%{apxs}
 BuildRequires:	apache1-devel >= 1.3.33-2
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(triggerpostun):	%{apxs}
-Requires:	apache1 >= 1.3.33-2
+Requires:	apache1(EAPI)
 Obsoletes:	apache-mod_access_referer <= 1.0.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
