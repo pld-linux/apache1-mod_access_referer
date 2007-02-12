@@ -1,7 +1,7 @@
 %define		mod_name	access_referer
 %define 	apxs		%{_sbindir}/apxs1
 Summary:	Access control based on "Referer" HTTP header content
-Summary(pl):	Kontrola dostÍpu bazuj±ca na zawarto∂ci standardowego nag≥Ûwka HTTP "REFERER"
+Summary(pl.UTF-8):   Kontrola dostƒôpu bazujƒÖca na zawarto≈õci standardowego nag≈Ç√≥wka HTTP "REFERER"
 Name:		apache1-mod_%{mod_name}
 Version:	1.0.2
 Release:	4
@@ -26,9 +26,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This is an module for the Apache HTTP Server that provides access
 control based on "Referer" HTTP header content.
 
-%description -l pl
-Modu≥ ten pozwala na kontrolowanie dostÍpu do plikÛw na serwerze w
-zaleøno∂ci od zawarto∂ci standardowego nag≥Ûwka HTTP - "REFERER"
+%description -l pl.UTF-8
+Modu≈Ç ten pozwala na kontrolowanie dostƒôpu do plik√≥w na serwerze w
+zale≈ºno≈õci od zawarto≈õci standardowego nag≈Ç√≥wka HTTP - "REFERER"
 
 %prep
 %setup -q -n mod_%{mod_name}-%{version}
