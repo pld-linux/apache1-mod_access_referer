@@ -1,7 +1,7 @@
 %define		mod_name	access_referer
 %define 	apxs		%{_sbindir}/apxs1
 Summary:	Access control based on "Referer" HTTP header content
-Summary(pl.UTF-8):   Kontrola dostępu bazująca na zawartości standardowego nagłówka HTTP "REFERER"
+Summary(pl.UTF-8):	Kontrola dostępu bazująca na zawartości standardowego nagłówka HTTP "REFERER"
 Name:		apache1-mod_%{mod_name}
 Version:	1.0.2
 Release:	4
