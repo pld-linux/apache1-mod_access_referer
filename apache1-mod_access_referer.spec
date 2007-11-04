@@ -11,8 +11,7 @@ Source0:	http://dl.sourceforge.net/accessreferer/mod_%{mod_name}-%{version}.tar.
 # Source0-md5:	f1726cfe5965eda1bdca90b8db475377
 Patch0:		http://dl.sourceforge.net/accessreferer/mod_access_referer_1.0.2_third_part_patch.txt
 URL:		http://sourceforge.net/projects/accessreferer/
-BuildRequires:	apache1-apxs
-BuildRequires:	apache1-devel >= 1.3.33-2
+BuildRequires:	apache1-devel >= 1.3.39
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(triggerpostun):	%{apxs}
 Requires:	apache1(EAPI)
