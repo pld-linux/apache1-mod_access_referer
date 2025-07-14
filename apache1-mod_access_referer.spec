@@ -31,7 +31,7 @@ zależności od zawartości standardowego nagłówka HTTP - "REFERER"
 
 %prep
 %setup -q -n mod_%{mod_name}-%{version}
-%patch0 -p0
+%patch -P0 -p0
 
 %build
 %{apxs} -c mod_%{mod_name}.c -o mod_%{mod_name}.so
